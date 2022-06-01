@@ -2,8 +2,8 @@
 
 use Illuminate\Database\Eloquent\Model;
 
-class Lecturer extends Model
+class Agen extends Model
 {
-    protected $table   = 'lecturers';
+    protected $table   = 'agen';
     protected $guarded = [];
 }

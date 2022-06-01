@@ -1,28 +1,28 @@
 <?php namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
-use App\Models\Room;
+use App\Models\Kapal;
 use Illuminate\Http\Request;
 
-class RoomsController extends Controller
+class kapalController extends Controller
 {
     public function index(Request $request)
     {
-        $rooms = Room::orderBy('id', 'desc');
+        $kapal = Kapal::orderBy('id', 'desc');
 
         if (!empty($request->searchcode))
         {
-            $rooms = $rooms->where('code_rooms', 'LIKE', '%' . $request->searchcode . '%');
+            $kapal = $kapal->where('code_kapal', 'LIKE', '%' . $request->searchcode . '%');
         }
 
         if (!empty($request->searchname))
         {
-            $rooms = $rooms->where('name', 'LIKE', '%' . $request->searchname . '%');
+            $kapal = $kapal->where('name', 'LIKE', '%' . $request->searchname . '%');
         }
 
-        $rooms = $rooms->paginate(10);
+        $kapal = $kapal->paginate(10);
 
-        return view('admin.room.index', compact('rooms'));
+        return view('admin.Kapal.index', compact('kapal'));
     }
 
     public function create(Request $request)
@@ -32,35 +32,35 @@ class RoomsController extends Controller
             'Teori'        => 'Teori',
             'Laboratorium' => 'Laboratorium');
 
-        return view('admin.room.create', compact('type'));
+        return view('admin.Kapal.create', compact('type'));
     }
 
     public function store(Request $request)
     {
         $this->validate($request, [
-            'code_rooms' => 'unique:rooms,code_rooms|required',
-            'namerooms'  => 'required',
+            'code_kapal' => 'unique:kapal,code_kapal|required',
+            'namekapal'  => 'required',
             'capacity'   => 'required',
 
         ]);
 
         $params = [
-            'code_rooms' => $request->input('code_rooms'),
-            'name'       => $request->input('namerooms'),
+            'code_kapal' => $request->input('code_kapal'),
+            'name'       => $request->input('namekapal'),
             'capacity'   => $request->input('capacity'),
             'type'       => $request->input('type'),
         ];
 
-        $rooms = Room::create($params);
+        $kapal = Kapal::create($params);
 
-        return redirect()->route('admin.rooms');
+        return redirect()->route('admin.kapal');
     }
 
     public function edit($id)
     {
-        $rooms = Room::find($id);
+        $kapal = Kapal::find($id);
 
-        if ($rooms == null)
+        if ($kapal == null)
         {
             return view('admin.layouts.404');
         }
@@ -69,33 +69,33 @@ class RoomsController extends Controller
             'Teori'        => 'Teori',
             'Laboratorium' => 'Laboratorium');
 
-        return view('admin.room.edit', compact('rooms', 'type'));
+        return view('admin.Kapal.edit', compact('kapal', 'type'));
     }
 
     public function update(Request $request, $id)
     {
 
         $this->validate($request, [
-            'code_rooms' => 'unique:rooms,code_rooms,' . $id . '|required',
-            'namerooms'  => 'required',
+            'code_kapal' => 'unique:kapal,code_kapal,' . $id . '|required',
+            'namekapal'  => 'required',
             'capacity'   => 'required',
 
         ]);
 
-        $rooms             = Room::find($id);
-        $rooms->code_rooms = $request->input('code_rooms');
-        $rooms->name       = $request->input('namerooms');
-        $rooms->capacity   = $request->input('capacity');
-        $rooms->type       = $request->input('type');
-        $rooms->save();
+        $kapal             = Kapal::find($id);
+        $kapal->code_kapal = $request->input('code_kapal');
+        $kapal->name       = $request->input('namekapal');
+        $kapal->capacity   = $request->input('capacity');
+        $kapal->type       = $request->input('type');
+        $kapal->save();
 
-        return redirect()->route('admin.rooms');
+        return redirect()->route('admin.kapal');
     }
 
     public function destroy($id)
     {
-        Room::find($id)->delete();
+        Kapal::find($id)->delete();
 
-        return redirect()->route('admin.rooms')->with('success', 'Ruangan berhasil dihapus');
+        return redirect()->route('admin.kapal')->with('success', 'Ruangan berhasil dihapus');
     }
 }

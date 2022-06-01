@@ -2,10 +2,10 @@
 
 use App\Algoritma\GenerateAlgoritma;
 use App\Http\Controllers\Controller;
-use App\Models\Lecturer;
+use App\Models\Nahkoda;
 use App\Models\Schedule;
 use App\Models\Setting;
-use App\Models\Teach;
+use App\Models\Pembawakapal;
 use Excel;
 use Illuminate\Http\Request;
 
@@ -13,26 +13,26 @@ class GenetikController extends Controller
 {
     public function index(Request $request)
     {
-        $years = Teach::select('year')->groupBy('year')->pluck('year', 'year');
+        $years = Pembawakapal::select('year')->groupBy('year')->pluck('year', 'year');
 
         return view('admin.genetik.index', compact('years'));
     }
 
     public function submit(Request $request)
     {
-        $years            = Teach::select('year')->groupBy('year')->pluck('year', 'year');
+        $years            = Pembawakapal::select('year')->groupBy('year')->pluck('year', 'year');
         $input_kromosom   = $request->input('kromosom');
         $input_year       = $request->input('year');
         // $input_semester   = $request->input('semester');
         $input_generasi   = $request->input('generasi');
         $input_crossover  = $request->input('crossover');
         $input_mutasi     = $request->input('mutasi');
-        $count_lecturers  = Lecturer::count();
-        $count_teachs     = Teach::count();
+        $count_nahkoda    = Nahkoda::count();
+        $count_pembawakapal     = Pembawakapal::count();
         $kromosom         = $input_kromosom * $input_generasi;
         $crossover        = $input_kromosom * $input_crossover;
         $generate         = new GenerateAlgoritma;
-        $data_kromosoms   = $generate->randKromosom($kromosom, $count_teachs, $input_year);//, $input_semester);
+        $data_kromosoms   = $generate->randKromosom($kromosom, $count_pembawakapal, $input_year);
         //return dd($data_kromosoms);
         $result_schedules = $generate->checkPinalty();
 
@@ -43,7 +43,7 @@ class GenetikController extends Controller
 
         $mutasi        = Setting::firstOrNew(['key' => 'mutasi']);
         $mutasi->name  = 'Mutasi';
-        $mutasi->value = (3 * $count_teachs) * $input_kromosom * $input_mutasi;
+        $mutasi->value = (3 * $count_pembawakapal) * $input_kromosom * $input_mutasi;
         $mutasi->save();
 
 
@@ -53,7 +53,7 @@ class GenetikController extends Controller
 
     public function result($id)
     {
-        $years          = Teach::select('year')->groupBy('year')->pluck('year', 'year');
+        $years          = Pembawakapal::select('year')->groupBy('year')->pluck('year', 'year');
         $kromosom       = Schedule::select('type')->groupBy('type')->get()->count();
         $crossover      = Setting::where('key', Setting::CROSSOVER)->first();
         $mutasi         = Setting::where('key', Setting::MUTASI)->first();

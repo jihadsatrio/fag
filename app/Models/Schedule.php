@@ -15,9 +15,9 @@ class Schedule extends Model
         return $this->belongsTo(Day::class, 'days_id');
     }
 
-    public function teach()
+    public function pembawakapal()
     {
-        return $this->belongsTo(Teach::class, 'teachs_id');
+        return $this->belongsTo(Pembawakapal::class, 'pembawakapal_id');
     }
 
     public function time()
@@ -25,8 +25,8 @@ class Schedule extends Model
         return $this->belongsTo(Time::class, 'times_id');
     }
 
-    public function room()
+    public function kapal()
     {
-        return $this->belongsTo(Room::class, 'rooms_id');
+        return $this->belongsTo(Kapal::class, 'kapal_id');
     }
 }

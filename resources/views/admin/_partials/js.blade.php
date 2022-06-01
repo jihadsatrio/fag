@@ -32,72 +32,72 @@
                 },
              }
         },
-        emaillecturer : {
+        emailnahkoda : {
             remote: {
-                url: "{{ route('ajax.lecturer.email') }}",
+                url: "{{ route('ajax.nahkoda.email') }}",
                 type: "GET",
                 data: {
-                    emaillecturer: function() { return $('#emaillecturer').val(); },
-                    idlecturer: function() { return $('#idlecturer').val(); }
+                    emailnahkoda: function() { return $('#emailnahkoda').val(); },
+                    idnahkoda: function() { return $('#idnahkoda').val(); }
                 },
              }
         },
-        nidnlecturer : {
+        nidnnahkoda : {
             remote: {
-                url: "{{ route('ajax.lecturer.nidn') }}",
+                url: "{{ route('ajax.nahkoda.nidn') }}",
                 type: "GET",
                 data: {
-                    nidnlecturer: function() { return $('#nidnlecturer').val(); },
-                    idlecturer: function() { return $('#idlecturer').val(); }
+                    nidnnahkoda: function() { return $('#nidnnahkoda').val(); },
+                    idnahkoda: function() { return $('#idnahkoda').val(); }
                 },
              }
         },
-        namecourses : {
+        namekapal : {
             remote: {
-                url: "{{ route('ajax.course.name') }}",
+                url: "{{ route('ajax.kapal.name') }}",
                 type: "GET",
                 data: {
-                    namecourses: function() { return $('#namecourses').val(); },
-                    idcourse: function() { return $('#idcourse').val(); }
+                    namekapal: function() { return $('#namekapal').val(); },
+                    idkapal: function() { return $('#idkapal').val(); }
                 },
              }
         },
-        code_courses : {
+        code_kapals : {
             remote: {
-                url: "{{ route('ajax.course.code') }}",
+                url: "{{ route('ajax.kapal.code') }}",
                 type: "GET",
                 data: {
-                    code_courses: function() { return $('#code_courses').val(); },
-                    idcourse: function() { return $('#idcourse').val(); }
+                    code_kapals: function() { return $('#code_kapals').val(); },
+                    idkapal: function() { return $('#idkapal').val(); }
                 },
              }
         },
-        code_rooms : {
+        code_kapal : {
             remote: {
-                url: "{{ route('ajax.room.code') }}",
+                url: "{{ route('ajax.kapal.code') }}",
                 type: "GET",
                 data: {
-                    code_rooms: function() { return $('#code_rooms').val(); },
-                    idroom: function() { return $('#idroom').val(); }
+                    code_kapal: function() { return $('#code_kapal').val(); },
+                    idkapal: function() { return $('#idkapal').val(); }
                 },
              }
         },
-        namerooms : {
+        namekapal : {
             remote: {
-                url: "{{ route('ajax.room.name') }}",
+                url: "{{ route('ajax.kapal.name') }}",
                 type: "GET",
                 data: {
-                    namerooms: function() { return $('#namerooms').val(); },
-                    idroom: function() { return $('#idroom').val(); }
+                    namekapal: function() { return $('#namekapal').val(); },
+                    idkapal: function() { return $('#idkapal').val(); }
                 },
              }
         },
-        // courses : {
+        // kapals : {
         //     remote: {
-        //         url: "{{ route('ajax.teach.courses') }}",
+        //         url: "",
         //         type: "GET",
         //         data: {
-        //             Teachsroom: function() { return $('#Teachsroom').val(); },
+        //             Teachskapal: function() { return $('#Teachskapal').val(); },
         //             idteachs: function() { return $('#idteachs').val(); }
         //         },
         //      }
@@ -107,26 +107,26 @@
             emailuser: {
                 remote: "Email already in use!"
             },
-            emaillecturer: {
+            emailnahkoda: {
                 remote: "Email already in use!"
             },
-            nidnlecturer: {
+            nidnnahkoda: {
                 remote: "Nidn already in use!"
             },
-            namecourses: {
-                remote: "Courses name already in use!"
+            namekapals: {
+                remote: "kapals name already in use!"
             },
-            code_courses: {
-                remote: "Courses Code already in use!"
+            code_kapals: {
+                remote: "kapals Code already in use!"
             },
-            code_rooms: {
-                remote: "Rooms Code already in use!"
+            code_kapal: {
+                remote: "kapal Code already in use!"
             },
-            namerooms: {
-                remote: "Rooms name already in use!"
+            namekapal: {
+                remote: "kapal name already in use!"
             }
-            // courses: {
-            //     remote:"Courses and Lecturer already in use!"
+            // kapals: {
+            //     remote:"kapals and nahkoda already in use!"
             // }
         },
        invalidHandler: function(event, validator) {

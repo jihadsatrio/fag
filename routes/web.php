@@ -23,13 +23,13 @@ Route::group(['namespace' => 'Admin'], function ()
 
         // AJAX
         Route::get('ajax/user/email', ['as' => 'ajax.user.email', 'uses' => 'AjaxController@EmailUser']);
-        Route::get('ajax/lecturer/email', ['as' => 'ajax.lecturer.email', 'uses' => 'AjaxController@EmailLecturer']);
-        Route::get('ajax/lecturer/nidn', ['as' => 'ajax.lecturer.nidn', 'uses' => 'AjaxController@NidnLecturer']);
-        Route::get('ajax/course/name', ['as' => 'ajax.course.name', 'uses' => 'AjaxController@NameCourses']);
-        Route::get('ajax/course/code', ['as' => 'ajax.course.code', 'uses' => 'AjaxController@CodeCourses']);
-        Route::get('ajax/room/name', ['as' => 'ajax.room.name', 'uses' => 'AjaxController@NameRooms']);
-        Route::get('ajax/room/code', ['as' => 'ajax.room.code', 'uses' => 'AjaxController@CodeRooms']);
-        Route::get('ajax/teach/courses', ['as' => 'ajax.teach.courses', 'uses' => 'AjaxController@Teachsroom']);
+        Route::get('ajax/nahkoda/email', ['as' => 'ajax.nahkoda.email', 'uses' => 'AjaxController@EmailNahkoda']);
+        Route::get('ajax/nahkoda/nidn', ['as' => 'ajax.nahkoda.nidn', 'uses' => 'AjaxController@NidnNahkoda']);
+        Route::get('ajax/agen/name', ['as' => 'ajax.agen.name', 'uses' => 'AjaxController@NameAgen']);
+        Route::get('ajax/agen/code', ['as' => 'ajax.agen.code', 'uses' => 'AjaxController@CodeAgen']);
+        Route::get('ajax/kapal/name', ['as' => 'ajax.kapal.name', 'uses' => 'AjaxController@NameKapal']);
+        Route::get('ajax/kapal/code', ['as' => 'ajax.kapal.code', 'uses' => 'AjaxController@CodeKapal']);
+        Route::get('ajax/pembawakapal/agen', ['as' => 'ajax.pembawakapal.agen', 'uses' => 'AjaxController@PembawakapalKapal']);
 
         // User
         Route::get('users', ['as' => 'admin.user', 'uses' => 'UserController@index']);
@@ -55,37 +55,37 @@ Route::group(['namespace' => 'Admin'], function ()
         Route::post('times/update/{id?}', ['as' => 'admin.time.update', 'uses' => 'TimeController@update']);
         Route::delete('times/delete/{id}', ['as' => 'admin.time.delete', 'uses' => 'TimeController@destroy']);
 
-        //Lecturer
-        Route::get('lecturers', ['as' => 'admin.lecturers', 'uses' => 'LecturersController@index']);
-        Route::get('lecturers/create', ['as' => 'admin.lecturer.create', 'uses' => 'LecturersController@create']);
-        Route::post('lecturers/create', ['as' => 'admin.lecturer.store', 'uses' => 'LecturersController@store']);
-        Route::get('lecturers/edit/{id}', ['as' => 'admin.lecturer.edit', 'uses' => 'LecturersController@edit']);
-        Route::post('lecturers/update/{id?}', ['as' => 'admin.lecturer.update', 'uses' => 'LecturersController@update']);
-        Route::delete('lecturers/delete/{id}', ['as' => 'admin.lecturer.delete', 'uses' => 'LecturersController@destroy']);
+        //Nahkoda
+        Route::get('nahkoda', ['as' => 'admin.nahkoda', 'uses' => 'NahkodaController@index']);
+        Route::get('nahkoda/create', ['as' => 'admin.nahkoda.create', 'uses' => 'NahkodaController@create']);
+        Route::post('nahkoda/create', ['as' => 'admin.nahkoda.tore', 'uses' => 'NahkodaController@store']);
+        Route::get('nahkoda/edit/{id}', ['as' => 'admin.nahkoda.edit', 'uses' => 'NahkodaController@edit']);
+        Route::post('nahkoda/update/{id?}', ['as' => 'admin.nahkod.aupdate', 'uses' => 'NahkodaController@update']);
+        Route::delete('nahkoda/delete/{id}', ['as' => 'admin.nahkoda.delete', 'uses' => 'NahkodasController@destroy']);
 
-        //Courses
-        Route::get('courses', ['as' => 'admin.courses', 'uses' => 'CoursesController@index']);
-        Route::get('courses/create', ['as' => 'admin.courses.create', 'uses' => 'CoursesController@create']);
-        Route::post('courses/create', ['as' => 'admin.courses.store', 'uses' => 'CoursesController@store']);
-        Route::get('courses/edit/{id}', ['as' => 'admin.courses.edit', 'uses' => 'CoursesController@edit']);
-        Route::post('courses/update/{id?}', ['as' => 'admin.courses.update', 'uses' => 'CoursesController@update']);
-        Route::delete('courses/delete/{id}', ['as' => 'admin.courses.delete', 'uses' => 'CoursesController@destroy']);
+        //Agen
+        Route::get('agen', ['as' => 'admin.agen', 'uses' => 'AgenController@index']);
+        Route::get('agen/create', ['as' => 'admin.agen.create', 'uses' => 'AgenController@create']);
+        Route::post('agen/create', ['as' => 'admin.agen.store', 'uses' => 'AgenController@store']);
+        Route::get('agen/edit/{id}', ['as' => 'admin.agen.edit', 'uses' => 'AgenController@edit']);
+        Route::post('agen/update/{id?}', ['as' => 'admin.agen.update', 'uses' => 'AgenController@update']);
+        Route::delete('agen/delete/{id}', ['as' => 'admin.agen.delete', 'uses' => 'AgenController@destroy']);
 
-        //Room
-        Route::get('rooms', ['as' => 'admin.rooms', 'uses' => 'RoomsController@index']);
-        Route::get('rooms/create', ['as' => 'admin.room.create', 'uses' => 'RoomsController@create']);
-        Route::post('rooms/create', ['as' => 'admin.room.store', 'uses' => 'RoomsController@store']);
-        Route::get('rooms/edit/{id}', ['as' => 'admin.room.edit', 'uses' => 'RoomsController@edit']);
-        Route::post('rooms/update/{id?}', ['as' => 'admin.room.update', 'uses' => 'RoomsController@update']);
-        Route::delete('rooms/delete/{id}', ['as' => 'admin.room.delete', 'uses' => 'RoomsController@destroy']);
+        //Kapal
+        Route::get('kapal', ['as' => 'admin.kapal', 'uses' => 'KapalController@index']);
+        Route::get('kapal/create', ['as' => 'admin.kapal.create', 'uses' => 'KapalController@create']);
+        Route::post('kapal/create', ['as' => 'admin.kapal.store', 'uses' => 'KapalController@store']);
+        Route::get('kapal/edit/{id}', ['as' => 'admin.kapal.edit', 'uses' => 'KapalController@edit']);
+        Route::post('kapal/update/{id?}', ['as' => 'admin.kapal.update', 'uses' => 'KapalController@update']);
+        Route::delete('kapal/delete/{id}', ['as' => 'admin.kapal.delete', 'uses' => 'KapalController@destroy']);
 
-        //Teach
-        Route::get('teachs', ['as' => 'admin.teachs', 'uses' => 'TeachController@index']);
-        Route::get('teachs/create', ['as' => 'admin.teach.create', 'uses' => 'TeachController@create']);
-        Route::post('teachs/create', ['as' => 'admin.teach.store', 'uses' => 'TeachController@store']);
-        Route::get('teachs/edit/{id}', ['as' => 'admin.teach.edit', 'uses' => 'TeachController@edit']);
-        Route::post('teachs/update/{id?}', ['as' => 'admin.teach.update', 'uses' => 'TeachController@update']);
-        Route::delete('teachs/delete/{id}', ['as' => 'admin.teach.delete', 'uses' => 'TeachController@destroy']);
+        //Pembawakapal
+        Route::get('pembawakapal', ['as' => 'admin.pembawakapal', 'uses' => 'PembawakapalController@index']);
+        Route::get('pembawakapal/create', ['as' => 'admin.pembawakapalcreate', 'uses' => 'PembawakapalController@create']);
+        Route::post('pembawakapal/create', ['as' => 'admin.pembawakapalstore', 'uses' => 'PembawakapalController@store']);
+        Route::get('pembawakapal/edit/{id}', ['as' => 'admin.pembawakapaledit', 'uses' => 'PembawakapalController@edit']);
+        Route::post('pembawakapal/update/{id?}', ['as' => 'admin.pembawakapalupdate', 'uses' => 'PembawakapalController@update']);
+        Route::delete('pembawakapal/delete/{id}', ['as' => 'admin.pembawakapaldelete', 'uses' => 'PembawakapalController@destroy']);
 
         //TimesNotAvailable
         Route::get('timenotavailable', ['as' => 'admin.timenotavailables', 'uses' => 'TimenotavailableController@index']);

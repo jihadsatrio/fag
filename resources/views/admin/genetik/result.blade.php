@@ -170,28 +170,28 @@
                                             </td>
                                             <td >
                                                 {{
-                                                    isset($schedule->room->name) ? $schedule->room->name : ''
+                                                    isset($schedule->kapal->name) ? $schedule->kapal->name : ''
                                                 }}
                                             </td>
                                             <td >
                                                 {{
-                                                    isset($schedule->room->capacity) ? $schedule->room->capacity : ''
+                                                    isset($schedule->kapal->capacity) ? $schedule->kapal->capacity : ''
                                                 }}
                                             </td>
                                             <td >
                                                 {{
-                                                    isset($schedule->teach->course->name) ? $schedule->teach->course->name : ''
+                                                    isset($schedule->pembawakapal->agen->name) ? $schedule->pembawakapal->agen->name : ''
                                                 }}
                                             </td>
                                             <td >
                                                 {{
-                                                    isset($schedule->teach->lecturer->name) ? $schedule->teach->lecturer->name : ''
+                                                    isset($schedule->pembawakapal->nahkoda->name) ? $schedule->pembawakapal->nahkoda->name : ''
                                                 }}
                                             </td>
 
                                             <td >
                                                 {{
-                                                    isset($schedule->teach->class_room) ? $schedule->teach->class_room : ''
+                                                    isset($schedule->pembawakapal->class_kapal) ? $schedule->pembawakapal->class_kapal : ''
                                                 }}
                                             </td>
                                         </tr>

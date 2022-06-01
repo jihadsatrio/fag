@@ -1,7 +1,7 @@
 <?php namespace App\Models;
 
 use App\Models\Day;
-use App\Models\Lecturer;
+use App\Models\Nahkoda;
 use App\Models\Time;
 use Illuminate\Database\Eloquent\Model;
 
@@ -10,9 +10,9 @@ class Timenotavailable extends Model
     protected $table   = 'time_not_available';
     protected $guarded = [];
 
-    public function lecturer()
+    public function nahkoda()
     {
-        return $this->belongsTo(Lecturer::class, 'lecturers_id');
+        return $this->belongsTo(Nahkoda::class, 'nahkoda_id');
     }
 
     public function day()

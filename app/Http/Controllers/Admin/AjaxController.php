@@ -1,10 +1,11 @@
 <?php namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
-use App\Models\Course;
-use App\Models\Lecturer;
-use App\Models\Room;
-use App\Models\Teach;
+use App\Models\
+;
+use App\Models\Nahkoda;
+use App\Models\Kapal;
+use App\Models\Pembawakapal;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Response;
@@ -34,18 +35,18 @@ class AjaxController extends Controller
         return Response::json($params);
     }
 
-    public function EmailLecturer(Request $request)
+    public function EmailNahkoda(Request $request)
     {
-        $lecturers  = Lecturer::where('email', $request->emaillecturer)->first();
-        $idlecturer = $request->idlecturer;
+        $nahkoda  = Nahkoda::where('email', $request->emailnahkoda)->first();
+        $idnahkoda = $request->idnahkoda;
 
-        if ($lecturers == null)
+        if ($nahkoda == null)
         {
             $params = true;
         }
         else
         {
-            if ($lecturers->id == $idlecturer)
+            if ($nahkoda->id == $idnahkoda)
             {
                 $params = true;
             }
@@ -57,18 +58,18 @@ class AjaxController extends Controller
         return Response::json($params);
     }
 
-    public function NidnLecturer(Request $request)
+    public function NidnNahkoda(Request $request)
     {
-        $lecturers  = Lecturer::where('nidn', $request->nidnlecturer)->first();
-        $idlecturer = $request->idlecturer;
+        $nahkoda  = Nahkoda::where('nidn', $request->nidnnahkoda)->first();
+        $idnahkoda = $request->idnahkoda;
 
-        if ($lecturers == null)
+        if ($nahkoda == null)
         {
             $params = true;
         }
         else
         {
-            if ($lecturers->id == $idlecturer)
+            if ($nahkoda->id == $idnahkoda)
             {
                 $params = true;
             }
@@ -80,18 +81,18 @@ class AjaxController extends Controller
         return Response::json($params);
     }
 
-    public function NameCourses(Request $request)
+    public function NameAgen(Request $request)
     {
-        $courses  = Course::where('name', $request->namecourses)->first();
-        $idcourse = $request->idcourse;
+        $agen  = Agen::where('name', $request->nameagen)->first();
+        $idagen = $request->idagen;
 
-        if ($courses == null)
+        if ($agen == null)
         {
             $params = true;
         }
         else
         {
-            if ($courses->id == $idcourse)
+            if ($agen->id == $idagen)
             {
                 $params = true;
             }
@@ -103,18 +104,18 @@ class AjaxController extends Controller
         return Response::json($params);
     }
 
-    public function CodeCourses(Request $request)
+    public function CodeAgen(Request $request)
     {
-        $courses  = Course::where('code_courses', $request->code_courses)->first();
-        $idcourse = $request->idcourse;
+        $agen  = Agen::where('code_agen', $request->code_agen)->first();
+        $idagen = $request->idagen;
 
-        if ($courses == null)
+        if ($agen == null)
         {
             $params = true;
         }
         else
         {
-            if ($courses->id == $idcourse)
+            if ($agen->id == $idagen)
             {
                 $params = true;
             }
@@ -126,18 +127,18 @@ class AjaxController extends Controller
         return Response::json($params);
     }
 
-    public function CodeRooms(Request $request)
+    public function CodeKapal(Request $request)
     {
-        $rooms  = Room::where('code_rooms', $request->code_rooms)->first();
-        $idroom = $request->idroom;
+        $kapal  = Kapal::where('code_kapal', $request->code_kapal)->first();
+        $idkapal = $request->idkapal;
 
-        if ($rooms == null)
+        if ($kapal == null)
         {
             $params = true;
         }
         else
         {
-            if ($rooms->id == $idroom)
+            if ($kapal->id == $idkapal)
             {
                 $params = true;
             }
@@ -149,18 +150,18 @@ class AjaxController extends Controller
         return Response::json($params);
     }
 
-    public function NameRooms(Request $request)
+    public function NameKapal(Request $request)
     {
-        $rooms  = Room::where('name', $request->namerooms)->first();
-        $idroom = $request->idroom;
+        $kapal  = Kapal::where('name', $request->namekapal)->first();
+        $idkapal = $request->idkapal;
 
-        if ($rooms == null)
+        if ($kapal == null)
         {
             $params = true;
         }
         else
         {
-            if ($rooms->id == $idroom)
+            if ($kapal->id == $idkapal)
             {
                 $params = true;
             }
@@ -172,18 +173,18 @@ class AjaxController extends Controller
         return Response::json($params);
     }
 
-    public function Teachsroom(Request $request)
+    public function PembawakapalKapal(Request $request)
     {
-        $teachs   = Teach::where('courses_id', $request->courses)->first();
-        $idteachs = $request->idteachs;
+        $pembawakapal   = Pembawakapal::where('agen_id', $request->agen)->first();
+        $idpembawakapal = $request->idpembawakapal;
 
-        if ($teachs == null)
+        if ($pembawakapal == null)
         {
             $params = true;
         }
         else
         {
-            if ($teachs->id == $idteachs)
+            if ($pembawakapal->id == $idpembawakapal)
             {
                 $params = true;
             }

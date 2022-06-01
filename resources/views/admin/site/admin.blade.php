@@ -32,8 +32,8 @@
         <div class="col-lg-3 col-xs-6">
           <div class="small-box bg-yellow">
             <div class="inner">
-              <h3>{{ $lecturers }}</h3>
-              <p>Dosen</p>
+              <h3>{{ $nahkoda }}</h3>
+              <p>nahkoda</p>
             </div>
             <div class="icon">
               <i class="fa  fa-users"></i>
@@ -43,8 +43,8 @@
         <div class="col-lg-3 col-xs-6">
           <div class="small-box bg-aqua">
             <div class="inner">
-            <h3>{{ $courses }}</h3>
-              <p>Mata Pelajaran</p>
+            <h3>{{ $agen }}</h3>
+              <p>agen</p>
             </div>
             <div class="icon">
               <i class="fa   fa-file"></i>
@@ -54,8 +54,8 @@
         <div class="col-lg-3 col-xs-6">
           <div class="small-box bg-green">
             <div class="inner">
-              <h3>{{ $teachs }}</h3>
-              <p>Pengampu</p>
+              <h3>{{ $pembawakapal }}</h3>
+              <p>Pembawakapal</p>
             </div>
             <div class="icon">
               <i class="fa fa-university"></i>
@@ -65,8 +65,8 @@
         <div class="col-lg-3 col-xs-6">
           <div class="small-box bg-red">
             <div class="inner">
-              <h3>{{ $rooms }}</h3>
-              <p>Ruangan</p>
+              <h3>{{ $kapal }}</h3>
+              <p>Kapal</p>
             </div>
             <div class="icon">
               <i class="fa fa-home"></i>

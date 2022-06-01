@@ -2,8 +2,8 @@
 
 use Illuminate\Database\Eloquent\Model;
 
-class Course extends Model
+class Kapal extends Model
 {
-    protected $table   = 'courses';
+    protected $table   = 'kapal';
     protected $guarded = [];
 }

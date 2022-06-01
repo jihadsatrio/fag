@@ -2,8 +2,8 @@
 
 use Illuminate\Database\Eloquent\Model;
 
-class Room extends Model
+class Nahkoda extends Model
 {
-    protected $table   = 'rooms';
+    protected $table   = 'nahkoda';
     protected $guarded = [];
 }

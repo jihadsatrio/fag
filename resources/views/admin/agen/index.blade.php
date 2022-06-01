@@ -1,8 +1,9 @@
 @extends('admin.layouts.master')
 
 @section('title')
-{{ $title= 'Mata Pelajaran' }}
+{{ $title= 'Agen' }}
 @stop
+
 
 @section('style')
 <style type="text/css">
@@ -37,15 +38,15 @@
                     </div>
                     <div class="box-body">
                         <div class="row">
-                        {!! Form::open(['role' => 'form', 'route' => 'admin.courses', 'method' =>'get']) !!}
+                        {!! Form::open(['role' => 'form', 'route' => 'admin.agen', 'method' =>'get']) !!}
                             <div class="col-md-6">
                                 <div class="form-group">
-                                    {!! Form::text('searchcode', Input::get('searchcode')?: null, ['class' => 'form-control', 'placeholder' => 'Mencari Berdasarkan Kode Mata Kuliah']) !!}
+                                    {!! Form::text('searchcode', Input::get('searchcode')?: null, ['class' => 'form-control', 'placeholder' => 'Mencari Berdasarkan Kode']) !!}
                                 </div>
                             </div>
                             <div class="col-md-6">
                                 <div class="form-group">
-                                    {!! Form::text('searchname', Input::get('searchname')?: null, ['class' => 'form-control', 'placeholder' => 'Mencari Berdasarkan Nama Mata Kuliah']) !!}
+                                    {!! Form::text('searchname', Input::get('searchname')?: null, ['class' => 'form-control', 'placeholder' => 'Mencari Berdasarkan Nama']) !!}
                                 </div>
                             </div>
                             <div class="col-md-12" style="padding-bottom: 15px;">
@@ -72,7 +73,7 @@
                                                 Type
                                             </th>
                                            <th colspan="2" style="text-align:center;">
-                                                <a class="btn btn-primary" href="{{ route('admin.courses.create') }}">
+                                                <a class="btn btn-primary" href="{{ route('admin.agen.create') }}">
                                                     <i class="fa fa-plus">
                                                     </i>
                                                     Tambah Data
@@ -81,13 +82,13 @@
                                         </tr>
                                     </thead>
                                     <tbody>
-                                    @foreach($courses as $key => $course)
+                                    @foreach($agen as $key => $course)
                                         <tr>
                                             <td align="center">
-                                                {{ ($courses->currentpage()-1) * $courses->perpage() + $key + 1 }}
+                                                {{ ($agen->currentpage()-1) * $agen->perpage() + $key + 1 }}
                                             </td>
                                              <td>
-                                                {{ $course->code_courses }}
+                                                {{ $course->code_agen }}
                                             </td>
                                             <td>
                                                 {{ $course->name }}
@@ -97,7 +98,7 @@
                                             </td>
                                             <td class="text-center">
                                                 <div class="btn-group">
-                                                    <a class="btn btn-warning btn-sm" href="{{ route('admin.courses.edit', $course->id) }}">
+                                                    <a class="btn btn-warning btn-sm" href="{{ route('admin.agen.edit', $course->id) }}">
                                                         <span class="glyphicon glyphicon-edit">
                                                         </span>
                                                         Ubah
@@ -106,7 +107,7 @@
                                             </td>
                                             <td class="text-center">
                                                 <div class="btn-group">
-                                                    {!! Form::model($course, ['route' => ['admin.courses.delete', $course->id], 'onclick' => 'return confirm("Anda Yakin?");']) !!}
+                                                    {!! Form::model($course, ['route' => ['admin.agen.delete', $course->id], 'onclick' => 'return confirm("Anda Yakin?");']) !!}
                                                     {!! Form::hidden('_method', 'DELETE') !!}
                                                     {!! Form::button('
                                                     <span class="glyphicon glyphicon-trash">
@@ -119,7 +120,7 @@
                                         @endforeach
                                     </tbody>
                                 </table>
-                                {!! $courses->appends(Input::all())->render() !!}
+                                {!! $agen->appends(Input::all())->render() !!}
                                 </div>
                             </div>
                         </div>

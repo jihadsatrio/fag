@@ -73,7 +73,7 @@
               </ul>
             </li>
             <li>
-                <a href="{{ route('admin.lecturers') }}">
+                <a href="{{ route('admin.nahkoda') }}">
                     <i class="fa fa-users"></i>
                     <span>
                         Nahkoda
@@ -81,7 +81,7 @@
                 </a>
             </li>
              <li>
-                <a href="{{ route('admin.courses') }}">
+                <a href="{{ route('admin.agen') }}">
                     <i class="fa fa-file"></i>
                     <span>
                         AGEN
@@ -89,7 +89,7 @@
                 </a>
             </li>
             <li>
-                <a href="{{ route('admin.teachs') }}">
+                <a href="{{ route('admin.pembawakapal') }}">
                     <i class="fa fa-university"></i>
                     <span>
                         Pembawa Kapal
@@ -97,7 +97,7 @@
                 </a>
             </li>
             <li>
-                <a href="{{ route('admin.rooms') }}">
+                <a href="{{ route('admin.kapal') }}">
                     <i class="fa fa fa-home"></i>
                     <span>
                         KAPAL

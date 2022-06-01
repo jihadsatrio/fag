@@ -1,54 +1,54 @@
 <?php namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
-use App\Models\Course;
-use App\Models\Lecturer;
-use App\Models\Teach;
+use App\Models\Agen;
+use App\Models\Nahkoda;
+use App\Models\Pembawakapal;
 use Illuminate\Http\Request;
 
-class TeachController extends Controller
+class PembawakapalController extends Controller
 {
 
     public function index(Request $request)
     {
-        $searchlecturers = $request->input('searchlecturers');
-        $searchcourse    = $request->input('searchcourse');
-        $teachs          = Teach::whereHas('lecturer', function ($query) use ($searchlecturers)
+        $searchnahkoda = $request->input('searchnahkoda');
+        $searchagen    = $request->input('searchagen');
+        $pembawakapal  = Pembawakapal::whereHas('nahkoda', function ($query) use ($searchnahkoda)
         {
 
-            if (!empty($searchlecturers))
+            if (!empty($searchnahkoda))
             {
-                $query = $query->where('lecturers.name', 'LIKE', '%' . $searchlecturers . '%');
+                $query = $query->where('nahkoda.name', 'LIKE', '%' . $searchnahkoda . '%');
             }
-        })->whereHas('course', function ($query) use ($searchcourse)
+        })->whereHas('agen', function ($query) use ($searchagen)
         {
-            if (!empty($searchcourse))
+            if (!empty($searchagen))
             {
-                $query = $query->where('courses.name', 'LIKE', '%' . $searchcourse . '%');
+                $query = $query->where('agen.name', 'LIKE', '%' . $searchagen . '%');
             }
         });
 
         if (!empty($request->searchclass))
         {
-            $teachs = $teachs->where('class_room', 'LIKE', '%' . $request->searchclass . '%');
+            $pembawakapal = $pembawakapal->where('class_kapal', 'LIKE', '%' . $request->searchclass . '%');
         }
 
         if (!empty($request->searchclass))
         {
-            $teachs = $teachs->where('class_room', 'LIKE', '%' . $request->searchclass . '%');
+            $pembawakapal = $pembawakapal->where('class_kapal', 'LIKE', '%' . $request->searchclass . '%');
         }
 
-        $teachs = $teachs->orderBy('id', 'desc')->paginate(10);
+        $pembawakapal = $pembawakapal->orderBy('id', 'desc')->paginate(10);
 
-        return view('admin.teach.index', compact('teachs'));
+        return view('admin.Pembawakapal.index', compact('pembawakapal'));
     }
 
     public function create(Request $request)
     {
-        $lecturers = Lecturer::orderBy('name', 'asc')->pluck('name', 'id');
-        $courses   = Course::orderBy('name', 'asc')->pluck('name', 'id');
+        $nahkoda = Nahkoda::orderBy('name', 'asc')->pluck('name', 'id');
+        $agen   = Agen::orderBy('name', 'asc')->pluck('name', 'id');
 
-        return view('admin.teach.create', compact('lecturers', 'courses'));
+        return view('admin.Pembawakapal.create', compact('nahkoda', 'agen'));
     }
 
     public function store(Request $request)
@@ -56,34 +56,34 @@ class TeachController extends Controller
         $this->validate($request, [
             'roomclass' => 'required',
             'year'      => 'required',
-            'lecturers' => 'required',
-            'courses'   => 'required',
+            'nahkoda' => 'required',
+            'agen'   => 'required',
         ]);
 
         $params = [
-            'class_room'   => $request->input('roomclass'),
+            'class_kapal'   => $request->input('roomclass'),
             'year'         => $request->input('year'),
-            'lecturers_id' => $request->input('lecturers'),
-            'courses_id'   => $request->input('courses'),
+            'nahkoda_id' => $request->input('nahkoda'),
+            'agen_id'   => $request->input('agen'),
         ];
 
-        $teachs = Teach::create($params);
+        $pembawakapal = Pembawakapal::create($params);
 
-        return redirect()->route('admin.teachs');
+        return redirect()->route('admin.pembawakapal');
     }
 
     public function edit($id)
     {
-        $teachs    = Teach::find($id);
-        $lecturers = Lecturer::orderBy('name', 'asc')->pluck('name', 'id');
-        $courses   = Course::orderBy('name', 'asc')->pluck('name', 'id');
+        $pembawakapal    = Pembawakapal::find($id);
+        $nahkoda = Nahkoda::orderBy('name', 'asc')->pluck('name', 'id');
+        $agen   = Agen::orderBy('name', 'asc')->pluck('name', 'id');
 
-        if ($teachs == null)
+        if ($pembawakapal == null)
         {
             return view('admin.layouts.404');
         }
 
-        return view('admin.teach.edit', compact('teachs', 'lecturers', 'courses'));
+        return view('admin.Pembawakapal.edit', compact('pembawakapal', 'nahkoda', 'agen'));
     }
 
     public function update(Request $request, $id)
@@ -91,24 +91,24 @@ class TeachController extends Controller
         $this->validate($request, [
             'roomclass' => 'required',
             'year'      => 'required',
-            'lecturers' => 'required',
-            'courses'   => 'required',
+            'nahkoda' => 'required',
+            'agen'   => 'required',
         ]);
 
-        $teachs               = Teach::find($id);
-        $teachs->class_room   = $request->input('roomclass');
-        $teachs->year         = $request->input('year');
-        $teachs->lecturers_id = $request->input('lecturers');
-        $teachs->courses_id   = $request->input('courses');
-        $teachs->save();
+        $pembawakapal               = Pembawakapal::find($id);
+        $pembawakapal->class_kapal   = $request->input('roomclass');
+        $pembawakapal->year         = $request->input('year');
+        $pembawakapal->nahkoda_id = $request->input('nahkoda');
+        $pembawakapal->agen_id   = $request->input('agen');
+        $pembawakapal->save();
 
-        return redirect()->route('admin.teachs');
+        return redirect()->route('admin.pembawakapal');
     }
 
     public function destroy($id)
     {
-        Teach::find($id)->delete();
+        Pembawakapal::find($id)->delete();
 
-        return redirect()->route('admin.teachs')->with('success', 'Pengampu berhasil dihapus');
+        return redirect()->route('admin.pembawakapal')->with('success', 'berhasil dihapus');
     }
 }

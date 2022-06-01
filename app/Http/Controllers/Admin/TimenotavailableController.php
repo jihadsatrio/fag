@@ -2,7 +2,7 @@
 
 use App\Http\Controllers\Controller;
 use App\Models\Day;
-use App\Models\Lecturer;
+use App\Models\Nahkoda;
 use App\Models\Time;
 use App\Models\Timenotavailable;
 use Illuminate\Http\Request;
@@ -12,14 +12,14 @@ class TimenotavailableController extends Controller
 
     public function index(Request $request)
     {
-        $searchlecturers   = $request->input('searchlecturers');
+        $searchnahkoda   = $request->input('searchnahkoda');
         $searchday         = $request->input('searchday');
-        $timenotavailables = Timenotavailable::whereHas('lecturer', function ($query) use ($searchlecturers)
+        $timenotavailables = Timenotavailable::whereHas('nahkoda', function ($query) use ($searchnahkoda)
         {
 
-            if (!empty($searchlecturers))
+            if (!empty($searchnahkoda))
             {
-                $query = $query->where('lecturers.name', 'LIKE', '%' . $searchlecturers . '%');
+                $query = $query->where('nahkoda.name', 'LIKE', '%' . $searchnahkoda . '%');
             }
         })->whereHas('day', function ($query) use ($searchday)
         {
@@ -37,24 +37,24 @@ class TimenotavailableController extends Controller
     public function create(Request $request)
     {
 
-        $lecturers = Lecturer::orderBy('name', 'asc')->pluck('name', 'id');
+        $nahkoda = Nahkoda::orderBy('name', 'asc')->pluck('name', 'id');
         $days      = Day::orderBy('name_day', 'asc')->pluck('name_day', 'id');
         $times     = Time::orderBy('range', 'asc')->pluck('range', 'id');
 
-        return view('admin.timenotavailable.create', compact('lecturers', 'days', 'times'));
+        return view('admin.timenotavailable.create', compact('nahkoda', 'days', 'times'));
     }
 
     public function store(Request $request)
     {
         $this->validate($request, [
-            'lecturers' => 'required',
+            'nahkoda' => 'required',
             'days'      => 'required',
             'times'     => 'required',
 
         ]);
 
         $params = [
-            'lecturers_id' => $request->input('lecturers'),
+            'nahkoda_id' => $request->input('nahkoda'),
             'days_id'      => $request->input('days'),
             'times_id'     => $request->input('times'),
         ];
@@ -67,7 +67,7 @@ class TimenotavailableController extends Controller
     public function edit($id)
     {
         $timenotavailables = Timenotavailable::find($id);
-        $lecturers         = Lecturer::orderBy('name', 'asc')->pluck('name', 'id');
+        $nahkoda         = Nahkoda::orderBy('name', 'asc')->pluck('name', 'id');
         $days              = Day::orderBy('name_day', 'asc')->pluck('name_day', 'id');
         $times             = Time::orderBy('range', 'asc')->pluck('range', 'id');
 
@@ -76,19 +76,19 @@ class TimenotavailableController extends Controller
             return view('admin.layouts.404');
         }
 
-        return view('admin.timenotavailable.edit', compact('timenotavailables', 'lecturers', 'days', 'times'));
+        return view('admin.timenotavailable.edit', compact('timenotavailables', 'nahkoda', 'days', 'times'));
     }
 
     public function update(Request $request, $id)
     {
         $this->validate($request, [
-            'lecturers' => 'required',
+            'nahkoda' => 'required',
             'days'      => 'required',
             'times'     => 'required',
         ]);
 
         $timenotavailables               = Timenotavailable::find($id);
-        $timenotavailables->lecturers_id = $request->input('lecturers');
+        $timenotavailables->nahkoda_id = $request->input('nahkoda');
         $timenotavailables->days_id      = $request->input('days');
         $timenotavailables->times_id     = $request->input('times');
         $timenotavailables->save();
@@ -100,7 +100,7 @@ class TimenotavailableController extends Controller
     {
         Timenotavailable::find($id)->delete();
 
-        return redirect()->route('admin.timenotavailables')->with('success', 'Waktu berhalangan dosen berhasil dihapus');
+        return redirect()->route('admin.timenotavailables')->with('success', 'Waktu berhalangan nahkoda berhasil dihapus');
     }
 
 }

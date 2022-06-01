@@ -1,15 +1,15 @@
-    {!! Form::hidden('idcourse', isset($courses->id) ? $courses->id : '', ['class' => 'form-control', 'id' => 'idcourse']) !!}
+    {!! Form::hidden('idcourse', isset($agen->id) ? $agen->id : '', ['class' => 'form-control', 'id' => 'idcourse']) !!}
 <div class="form-group">
     <label>
         KodeAGEN
     </label>
-    {!! Form::text('code_courses', null, ['class' => 'form-control', 'required', 'maxlength' => '100', 'placeholder' => 'Masukkan Kode Agen', 'id' => 'code_courses']) !!}
+    {!! Form::text('code_agen', null, ['class' => 'form-control', 'required', 'maxlength' => '100', 'placeholder' => 'Masukkan Kode Agen', 'id' => 'code_agen']) !!}
 </div>
 <div class="form-group">
     <label>
         Nama AGEN
     </label>
-    {!! Form::text('namecourses', isset($courses->name) ? $courses->name : '', ['class' => 'form-control', 'required', 'maxlength' => '100', 'placeholder' => 'Masukkan Nama Agen', 'id' => 'namecourses']) !!}
+    {!! Form::text('nameagen', isset($agen->name) ? $agen->name : '', ['class' => 'form-control', 'required', 'maxlength' => '100', 'placeholder' => 'Masukkan Nama Agen', 'id' => 'nameagen']) !!}
 </div>
 {{-- <div class="form-group">
     <label>

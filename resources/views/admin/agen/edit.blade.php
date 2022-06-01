@@ -34,8 +34,8 @@
                             <div class="col-md-12">
                                 <div class="panel-body no-padding" style="display: block;">
                                     @include('admin._partials.notifications')
-                                    {!! Form::model($courses, ['route' => ['admin.courses.update', $courses->id], 'files' => true, 'id' => 'form-register']) !!}
-                                        @include('admin.courses.form')
+                                    {!! Form::model($agen, ['route' => ['admin.agen.update', $agen->id], 'files' => true, 'id' => 'form-register']) !!}
+                                        @include('admin.agen.form')
                                     {!! Form::close() !!}
                                 </div>
                             </div>
