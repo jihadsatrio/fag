@@ -1,7 +1,7 @@
 @extends('admin.layouts.master')
 
 @section('title')
-{{ $title= 'Ruangan' }}
+{{ $title= 'kapal' }}
 @stop
 
 @section('style')
@@ -37,15 +37,15 @@
                     </div>
                     <div class="box-body">
                         <div class="row">
-                        {!! Form::open(['role' => 'form', 'route' => 'admin.rooms', 'method' =>'get']) !!}
+                        {!! Form::open(['role' => 'form', 'route' => 'admin.kapal', 'method' =>'get']) !!}
                             <div class="col-md-6">
                                 <div class="form-group">
-                                    {!! Form::text('searchcode', Input::get('searchcode')?: null, ['class' => 'form-control', 'placeholder' => 'Mencari Berdasarkan Kode Ruangan']) !!}
+                                    {!! Form::text('searchcode', Input::get('searchcode')?: null, ['class' => 'form-control', 'placeholder' => 'Mencari Berdasarkan Kode kapal']) !!}
                                 </div>
                             </div>
                             <div class="col-md-6">
                                 <div class="form-group">
-                                    {!! Form::text('searchname', Input::get('searchname')?: null, ['class' => 'form-control', 'placeholder' => 'Mencari Berdasarkan Nama Ruangan']) !!}
+                                    {!! Form::text('searchname', Input::get('searchname')?: null, ['class' => 'form-control', 'placeholder' => 'Mencari Berdasarkan Nama kapal']) !!}
                                 </div>
                             </div>
                             <div class="col-md-12" style="padding-bottom: 15px;">
@@ -62,10 +62,10 @@
                                                 No.
                                             </th>
                                             <th style="text-align:center;">
-                                                Kode Ruangan
+                                                Kode kapal
                                             </th>
                                             <th style="text-align:center;">
-                                                Nama Ruangan
+                                                Nama kapal
                                             </th>
                                             <th style="text-align:center;">
                                                 Kapasitas
@@ -74,7 +74,7 @@
                                                 Jenis
                                             </th>
                                            <th colspan="2" style="text-align:center;">
-                                                <a class="btn btn-primary" href="{{ route('admin.room.create') }}">
+                                                <a class="btn btn-primary" href="{{ route('admin.kapal.create') }}">
                                                     <i class="fa fa-plus">
                                                     </i>
                                                     Tambah Data
@@ -83,13 +83,14 @@
                                         </tr>
                                     </thead>
                                     <tbody>
+                                    {{$rooms = $kapal}}
                                     @foreach($rooms as $key => $room)
                                         <tr>
                                             <td align="center">
                                                 {{ ($rooms->currentpage()-1) * $rooms->perpage() + $key + 1 }}
                                             </td>
                                              <td>
-                                                {{ $room->code_rooms }}
+                                                {{ $room->code_kapal }}
                                             </td>
                                             <td>
                                                 {{ $room->name }}
@@ -102,7 +103,7 @@
                                             </td>
                                             <td class="text-center">
                                                 <div class="btn-group">
-                                                    <a class="btn btn-warning btn-sm" href="{{ route('admin.room.edit', $room->id) }}">
+                                                    <a class="btn btn-warning btn-sm" href="{{ route('admin.kapal.edit', $room->id) }}">
                                                         <span class="glyphicon glyphicon-edit">
                                                         </span>
                                                         Ubah
@@ -111,7 +112,7 @@
                                             </td>
                                             <td class="text-center">
                                                 <div class="btn-group">
-                                                    {!! Form::model($room, ['route' => ['admin.room.delete', $room->id], 'onclick' => 'return confirm("Anda Yakin?");']) !!}
+                                                    {!! Form::model($room, ['route' => ['admin.kapal.delete', $room->id], 'onclick' => 'return confirm("Anda Yakin?");']) !!}
                                                     {!! Form::hidden('_method', 'DELETE') !!}
                                                     {!! Form::button('
                                                     <span class="glyphicon glyphicon-trash">

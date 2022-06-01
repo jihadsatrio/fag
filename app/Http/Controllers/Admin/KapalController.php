@@ -22,17 +22,18 @@ class kapalController extends Controller
 
         $kapal = $kapal->paginate(10);
 
-        return view('admin.Kapal.index', compact('kapal'));
+        return view('admin.kapal.index', compact('kapal'));
     }
 
     public function create(Request $request)
     {
 
         $type = array(
-            'Teori'        => 'Teori',
-            'Laboratorium' => 'Laboratorium');
+            'KARGO'     => 'KARGO',
+            'TANKER' => 'TANKER',
+            'KONTAINER' => 'KONTAINER',);
 
-        return view('admin.Kapal.create', compact('type'));
+        return view('admin.kapal.create', compact('type'));
     }
 
     public function store(Request $request)
@@ -66,10 +67,11 @@ class kapalController extends Controller
         }
 
         $type = array(
-            'Teori'        => 'Teori',
-            'Laboratorium' => 'Laboratorium');
+            'KARGO'     => 'KARGO',
+            'TANKER' => 'TANKER',
+            'KONTAINER' => 'KONTAINER');
 
-        return view('admin.Kapal.edit', compact('kapal', 'type'));
+        return view('admin.kapal.edit', compact('kapal', 'type'));
     }
 
     public function update(Request $request, $id)

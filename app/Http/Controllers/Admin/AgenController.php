@@ -72,8 +72,9 @@ class agenController extends Controller
         }
 
         $type = array(
-            'Teori'     => 'Teori',
-            'Praktikum' => 'Praktikum');
+            'KARGO'     => 'KARGO',
+            'TANKER' => 'TANKER',
+            'KONTAINER' => 'KONTAINER');
 
         return view('admin.agen.edit', compact('agen', 'type'));
     }

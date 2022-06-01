@@ -1,15 +1,15 @@
-{!! Form::hidden('idroom', isset($rooms->id) ? $rooms->id : '', ['class' => 'form-control', 'id' => 'idroom']) !!}
+{!! Form::hidden('idkapal', isset($kapal->id) ? $kapal->id : '', ['class' => 'form-control', 'id' => 'idkapal']) !!}
 <div class="form-group">
     <label>
-        Kode Ruangan
+        Kode kapal
     </label>
-    {!! Form::text('code_rooms', null, ['class' => 'form-control', 'required', 'maxlength' => '100', 'placeholder' => 'Masukkan Kode Ruang', 'id' => 'code_rooms']) !!}
+    {!! Form::text('code_kapal', null, ['class' => 'form-control', 'required', 'maxlength' => '100', 'placeholder' => 'Masukkan Kode Ruang', 'id' => 'code_kapal']) !!}
 </div>
 <div class="form-group">
     <label>
-        Nama Ruangan
+        Nama kapal
     </label>
-    {!! Form::text('namerooms', isset($rooms->name) ? $rooms->name : '', ['class' => 'form-control', 'required', 'maxlength' => '100', 'placeholder' => 'Masukkan Nama Ruangan', 'id' => 'namerooms']) !!}
+    {!! Form::text('namekapal', isset($kapal->name) ? $kapal->name : '', ['class' => 'form-control', 'required', 'maxlength' => '100', 'placeholder' => 'Masukkan Nama kapal', 'id' => 'namekapal']) !!}
 </div>
 <div class="form-group">
     <label>

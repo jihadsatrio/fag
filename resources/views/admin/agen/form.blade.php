@@ -23,7 +23,7 @@
     ], null, ['class' => 'form-control select2 to-select', 'id' => 'sks', 'required','placeholder' => 'Pilih Sks']) !!}
     <label id="sks-error" class="error" for="sks" style="display: none;">This field is required.</label>
 </div> --}}
-<div class="form-group">
+{{-- <div class="form-group">
     <label>
         MUATAN
     </label>
@@ -34,7 +34,7 @@
         'PASIR' => 'PASIR',
     ], null, ['class' => 'form-control select2 to-select', 'id' => 'semester', 'required','placeholder' => 'Pilih Muatan']) !!}
     <label id="semester-error" class="error" for="semester" style="display: none;">This field is required.</label>
-</div>
+</div> --}}
 <div class="form-group">
     <label>
         Jenis

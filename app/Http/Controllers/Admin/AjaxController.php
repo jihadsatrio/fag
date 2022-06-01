@@ -1,8 +1,7 @@
 <?php namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
-use App\Models\
-;
+use App\Models\Agen;
 use App\Models\Nahkoda;
 use App\Models\Kapal;
 use App\Models\Pembawakapal;
