@@ -88,7 +88,7 @@
           <div class="small-box bg-red">
             <div class="inner">
               <h3>{{ $schedules }}</h3>
-              <p>Jadwal Mata Kuliah</p>
+              <p>Jadwal</p>
             </div>
             <div class="icon">
               <i class="fa  fa-folder"></i>

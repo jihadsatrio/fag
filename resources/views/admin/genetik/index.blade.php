@@ -42,18 +42,11 @@
                                 <div class="form-group">
                                   {!! Form::select('year',
                                     $years
-                                 , Input::get('year'), ['class' => 'form-control select2 to-select required', 'id' => 'year','placeholder' => 'Pilih Tahun Akademik']) !!}
+                                 , Input::get('year'), ['class' => 'form-control select2 to-select required', 'id' => 'year','placeholder' => 'Pilih Tahun']) !!}
                                 <label id="year-error" class="error" for="year" style="display: none;">This field is required.</label>
                                 </div>
                             </div>
-                            <div class="col-md-6">
-                                <div class="form-group">
-                                  {!! Form::select('semester', [
-                                      'Genap' => 'Genap',
-                                  ], Input::get('semester'), ['class' => 'form-control select2 to-select required', 'id' => 'semester','placeholder' => 'Pilih Semester']) !!}
-                                <label id="semester-error" class="error" for="semester" style="display: none;">This field is required.</label>
-                                </div>
-                            </div>
+
                             <div class="col-md-6">
                                 <div class="form-group">
                                   {!! Form::select('kromosom', [

@@ -60,7 +60,7 @@ Route::group(['namespace' => 'Admin'], function ()
         Route::get('nahkoda/create', ['as' => 'admin.nahkoda.create', 'uses' => 'NahkodaController@create']);
         Route::post('nahkoda/create', ['as' => 'admin.nahkoda.tore', 'uses' => 'NahkodaController@store']);
         Route::get('nahkoda/edit/{id}', ['as' => 'admin.nahkoda.edit', 'uses' => 'NahkodaController@edit']);
-        Route::post('nahkoda/update/{id?}', ['as' => 'admin.nahkod.aupdate', 'uses' => 'NahkodaController@update']);
+        Route::post('nahkoda/update/{id?}', ['as' => 'admin.nahkoda.update', 'uses' => 'NahkodaController@update']);
         Route::delete('nahkoda/delete/{id}', ['as' => 'admin.nahkoda.delete', 'uses' => 'NahkodasController@destroy']);
 
         //Agen
@@ -81,11 +81,11 @@ Route::group(['namespace' => 'Admin'], function ()
 
         //Pembawakapal
         Route::get('pembawakapal', ['as' => 'admin.pembawakapal', 'uses' => 'PembawakapalController@index']);
-        Route::get('pembawakapal/create', ['as' => 'admin.pembawakapalcreate', 'uses' => 'PembawakapalController@create']);
-        Route::post('pembawakapal/create', ['as' => 'admin.pembawakapalstore', 'uses' => 'PembawakapalController@store']);
-        Route::get('pembawakapal/edit/{id}', ['as' => 'admin.pembawakapaledit', 'uses' => 'PembawakapalController@edit']);
-        Route::post('pembawakapal/update/{id?}', ['as' => 'admin.pembawakapalupdate', 'uses' => 'PembawakapalController@update']);
-        Route::delete('pembawakapal/delete/{id}', ['as' => 'admin.pembawakapaldelete', 'uses' => 'PembawakapalController@destroy']);
+        Route::get('pembawakapal/create', ['as' => 'admin.pembawakapal.create', 'uses' => 'PembawakapalController@create']);
+        Route::post('pembawakapal/create', ['as' => 'admin.pembawakapal.store', 'uses' => 'PembawakapalController@store']);
+        Route::get('pembawakapal/edit/{id}', ['as' => 'admin.pembawakapal.edit', 'uses' => 'PembawakapalController@edit']);
+        Route::post('pembawakapal/update/{id?}', ['as' => 'admin.pembawakapal.update', 'uses' => 'PembawakapalController@update']);
+        Route::delete('pembawakapal/delete/{id}', ['as' => 'admin.pembawakapal.delete', 'uses' => 'PembawakapalController@destroy']);
 
         //TimesNotAvailable
         Route::get('timenotavailable', ['as' => 'admin.timenotavailables', 'uses' => 'TimenotavailableController@index']);

@@ -1,28 +1,28 @@
- {!! Form::hidden('idteachs', isset($teachs->id) ? $teachs->id : '', ['class' => 'form-control', 'id' => 'idteachs']) !!}
+ {!! Form::hidden('idnahkoda', isset($nahkoda->id) ? $nahkoda->id : '', ['class' => 'form-control', 'id' => 'idnahkoda']) !!}
 <div class="form-group">
     <label>
         Dosen
     </label>
-    {!! Form::select('lecturers', $lecturers, isset($teachs->lecturers_id) ? $teachs->lecturers_id : '' ,['class' => 'form-control select2 to-select','id' => 'lecturers', 'required', 'placeholder' => 'Pilih Dosen']) !!}
-    <label id="lecturers-error" class="error" for="lecturers" style="display: none;">This field is required.</label>
+    {!! Form::select('nahkoda', $nahkoda, isset($nahkoda->nahkoda_id) ? $nahkoda->nahkoda_id : '' ,['class' => 'form-control select2 to-select','id' => 'nahkoda', 'required', 'placeholder' => 'Pilih Dosen']) !!}
+    <label id="nahkoda-error" class="error" for="nahkoda" style="display: none;">This field is required.</label>
 </div>
 <div class="form-group">
     <label>
         Mata Kuliah
     </label>
-    {!! Form::select('courses', $courses, isset($teachs->courses_id) ? $teachs->courses_id : '' ,['class' => 'form-control select2 to-select','id' => 'courses', 'required', 'placeholder' => 'Pilih Kuliah']) !!}    <label id="courses-error" class="error" for="courses" style="display: none;">This field is required.</label>
+    {!! Form::select('agen', $agen, isset($nahkoda->agen_id) ? $nahkoda->agen_id : '' ,['class' => 'form-control select2 to-select','id' => 'agen', 'required', 'placeholder' => 'Pilih Kuliah']) !!}    <label id="agen-error" class="error" for="agen" style="display: none;">This field is required.</label>
 </div>
 <div class="form-group">
     <label>
         Kelas
     </label>
-    {!! Form::text('roomclass', isset($teachs->class_room) ? $teachs->class_room : '', ['class' => 'form-control', 'required', 'maxlength' => '100', 'placeholder' => 'Masukan Kelas','id' => 'roomclass']) !!}
+    {!! Form::text('roomclass', isset($nahkoda->class_kapal) ? $nahkoda->class_kapal : '', ['class' => 'form-control', 'required', 'maxlength' => '100', 'placeholder' => 'Masukan Kelas','id' => 'roomclass']) !!}
 </div>
 <div class="form-group">
      <label>
         Tahun Akademik
     </label>
-    {!! Form::text('year', null, ['class' => 'form-control', 'required', 'maxlength' => '100', 'placeholder' => 'Masukan Tahun Akademik']) !!}
+    {!! Form::text('year', null, ['class' => 'form-control', 'required', 'maxlength' => '100', 'placeholder' => 'Masukan Tahun']) !!}
 </div>
 <button class="btn btn-primary">
     Simpan

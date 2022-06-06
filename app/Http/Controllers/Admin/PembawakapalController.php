@@ -48,7 +48,7 @@ class PembawakapalController extends Controller
         $nahkoda = Nahkoda::orderBy('name', 'asc')->pluck('name', 'id');
         $agen   = Agen::orderBy('name', 'asc')->pluck('name', 'id');
 
-        return view('admin.Pembawakapal.create', compact('nahkoda', 'agen'));
+        return view('admin.pembawakapal.create', compact('nahkoda', 'agen'));
     }
 
     public function store(Request $request)
@@ -83,7 +83,7 @@ class PembawakapalController extends Controller
             return view('admin.layouts.404');
         }
 
-        return view('admin.Pembawakapal.edit', compact('pembawakapal', 'nahkoda', 'agen'));
+        return view('admin.pembawakapal.edit', compact('pembawakapal', 'nahkoda', 'agen'));
     }
 
     public function update(Request $request, $id)

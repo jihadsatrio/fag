@@ -53,13 +53,13 @@
                                     Kembali
                                 </a>
                             </div>
-                            <div class="col-md-4" style="padding-bottom: 3%;">
+{{--                             <div class="col-md-4" style="padding-bottom: 3%;">
                                 <a class="btn btn-info btn-block" href="{{ route('admin.generates.excel', $id) }}">
                                     <span class="glyphicon glyphicon-download">
                                     </span>
                                     Export Excel Data Ini
                                 </a>
-                            </div>
+                            </div> --}}
                             <div class="col-md-4" style="padding-bottom: 3%;">
                             @if(!empty($data_kromosom))
                                 <select class="form-control select2" id="myAction">

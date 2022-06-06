@@ -1,7 +1,7 @@
 @extends('admin.layouts.master')
 
 @section('title')
-{{ $title = 'Tambah Dosen' }}
+{{ $title = 'Tambah Nakoda' }}
 @stop
 
 @section('content')
@@ -32,7 +32,7 @@
                                 <div class="panel-body no-padding" style="display: block;">
                                     @include('admin._partials.notifications')
                                     {!! Form::open(['role' => 'form', 'files' => true, 'id' => 'form-register']) !!}
-                                        @include('admin.lecturer.form')
+                                        @include('admin.nahkoda.form')
                                     {!! Form::close() !!}
                                 </div>
                             </div>

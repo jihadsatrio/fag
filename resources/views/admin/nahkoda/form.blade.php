@@ -1,15 +1,15 @@
-{!! Form::hidden('idlecturer', isset($lecturers->id) ? $lecturers->id : '', ['class' => 'form-control', 'id' => 'idlecturer']) !!}
+{!! Form::hidden('idnahkoda', isset($nahkoda->id) ? $nahkoda->id : '', ['class' => 'form-control', 'id' => 'idnahkoda']) !!}
 <div class="form-group">
     <label>
-        Kode Dosen
+        Kode nahkoda
     </label>
-    {!! Form::text('code_lecturers', null, ['class' => 'form-control', 'required', 'maxlength' => '100', 'placeholder' => 'Masukkan Kode Dosen']) !!}
+    {!! Form::text('code_nahkoda', null, ['class' => 'form-control', 'required', 'maxlength' => '100', 'placeholder' => 'Masukkan Kode nahkoda']) !!}
 </div>
 <div class="form-group">
     <label>
         Nidn
     </label>
-    {!! Form::text('nidnlecturer', isset($lecturers->nidn) ? $lecturers->nidn : '',  ['class' => 'form-control', 'required', 'maxlength' => '100', 'placeholder' => 'Masukkan NIDN ', 'id' => 'nidnlecturer']) !!}
+    {!! Form::text('nidnNahkoda', isset($nahkoda->nidn) ? $nahkoda->nidn : '',  ['class' => 'form-control', 'required', 'maxlength' => '100', 'placeholder' => 'Masukkan NIDN ', 'id' => 'nidnNahkoda']) !!}
 </div>
 <div class="form-group">
     <label>
@@ -21,7 +21,7 @@
     <label>
         Email
     </label>
-    {!! Form::text('emaillecturer', isset($lecturers->email) ? $lecturers->email : '' , ['class' => 'form-control EmailFormat', 'required', 'maxlength' => '100', 'placeholder' => 'Masukkan Email', 'id' => 'emaillecturer']) !!}
+    {!! Form::text('emailNahkoda', isset($nahkoda->email) ? $nahkoda->email : '' , ['class' => 'form-control EmailFormat', 'required', 'maxlength' => '100', 'placeholder' => 'Masukkan Email', 'id' => 'emailNahkoda']) !!}
 </div>
 <button class="btn btn-primary">
     Simpan

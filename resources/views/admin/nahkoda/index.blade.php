@@ -1,7 +1,7 @@
 @extends('admin.layouts.master')
 
 @section('title')
-{{ $title= 'Dosen' }}
+{{ $title= 'nahkoda' }}
 @stop
 
 @section('style')
@@ -37,7 +37,7 @@
                     </div>
                     <div class="box-body">
                         <div class="row">
-                            {!! Form::open(['role' => 'form', 'route' => 'admin.lecturers', 'method' =>'get']) !!}
+                            {!! Form::open(['role' => 'form', 'route' => 'admin.nahkoda', 'method' =>'get']) !!}
                             <div class="col-md-6">
                                 <div class="form-group">
                                     {!! Form::text('searchnidn', Input::get('searchnidn')?: null, ['class' => 'form-control', 'placeholder' => 'Mencari Berdasarkan NIDN']) !!}
@@ -62,19 +62,19 @@
                                                 No.
                                             </th>
                                             <th style="text-align:center;">
-                                                Kode Dosen
+                                                Kode nahkoda
                                             </th>
                                             <th style="text-align:center;">
                                                 NIDN
                                             </th>
                                             <th style="text-align:center;">
-                                                Nama Dosen
+                                                Nama nahkoda
                                             </th>
                                             <th style="text-align:center;">
                                                 Email
                                             </th>
                                            <th colspan="2" style="text-align:center;">
-                                                <a class="btn btn-primary" href="{{ route('admin.lecturer.create') }}">
+                                                <a class="btn btn-primary" href="{{ route('admin.nahkoda.create') }}">
                                                     <i class="fa fa-plus">
                                                     </i>
                                                     Tambah Data
@@ -83,26 +83,27 @@
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        @foreach($lecturers as $key => $lecturer)
+                                        {{$nahkodas = $nahkoda}}
+                                        @foreach($nahkodas as $key => $nahkoda)
                                         <tr>
                                             <td align="center">
-                                                {{ ($lecturers->currentpage()-1) * $lecturers->perpage() + $key + 1 }}
+                                                {{ ($nahkodas->currentpage()-1) * $nahkodas->perpage() + $key + 1 }}
                                             </td>
                                              <td>
-                                                {{ $lecturer->code_lecturers }}
+                                                {{ $nahkoda->code_nahkoda }}
                                             </td>
                                             <td>
-                                                {{ $lecturer->nidn }}
+                                                {{ $nahkoda->nidn }}
                                             </td>
                                              <td>
-                                                {{ $lecturer->name }}
+                                                {{ $nahkoda->name }}
                                             </td>
                                              <td>
-                                                {{ $lecturer->email }}
+                                                {{ $nahkoda->email }}
                                             </td>
                                             <td class="text-center">
                                                 <div class="btn-group">
-                                                    <a class="btn btn-warning btn-sm" href="{{ route('admin.lecturer.edit', $lecturer->id) }}">
+                                                    <a class="btn btn-warning btn-sm" href="{{ route('admin.nahkoda.edit', $nahkoda->id) }}">
                                                         <span class="glyphicon glyphicon-edit">
                                                         </span>
                                                         Ubah
@@ -111,7 +112,7 @@
                                             </td>
                                             <td class="text-center">
                                                 <div class="btn-group">
-                                                    {!! Form::model($lecturer, ['route' => ['admin.lecturer.delete', $lecturer->id], 'onclick' => 'return confirm("Anda Yakin?");']) !!}
+                                                    {!! Form::model($nahkoda, ['route' => ['admin.nahkoda.delete', $nahkoda->id], 'onclick' => 'return confirm("Anda Yakin?");']) !!}
                                                     {!! Form::hidden('_method', 'DELETE') !!}
                                                     {!! Form::button('
                                                     <span class="glyphicon glyphicon-trash">
@@ -124,7 +125,7 @@
                                         @endforeach
                                     </tbody>
                                 </table>
-                                {!! $lecturers->appends(Input::all())->render() !!}
+                                {!! $nahkodas->appends(Input::all())->render() !!}
                                 </div>
                             </div>
                         </div>

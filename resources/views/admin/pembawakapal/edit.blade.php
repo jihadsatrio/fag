@@ -1,7 +1,7 @@
 @extends('admin.layouts.master')
 
 @section('title')
-{{ $title = 'Ubah Pengampu' }}
+{{ $title = 'Ubah pembawa kapal' }}
 @stop
 
 
@@ -34,8 +34,8 @@
                             <div class="col-md-12">
                                 <div class="panel-body no-padding" style="display: block;">
                                     @include('admin._partials.notifications')
-                                    {!! Form::model($teachs, ['route' => ['admin.teach.update', $teachs->id], 'files' => true, 'id' => 'form-register']) !!}
-                                        @include('admin.teach.form')
+                                    {!! Form::model($pembawakapal, ['route' => ['admin.pembawakapal.update', $pembawakapal->id], 'files' => true, 'id' => 'form-register']) !!}
+                                        @include('admin.pembawakapal.form')
                                     {!! Form::close() !!}
                                 </div>
                             </div>

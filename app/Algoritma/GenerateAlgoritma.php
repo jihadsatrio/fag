@@ -1,40 +1,40 @@
 <?php namespace app\Algoritma;
 
 use App\Models\Day;
-use App\Models\Room;
+use App\Models\Kapal;
 use App\Models\Schedule;
-use App\Models\Teach;
+use App\Models\Pembawakapal;
 use App\Models\Time;
 use App\Models\Timenotavailable;
 use DB;
 
 class GenerateAlgoritma
 {
-    public function randKromosom($kromosom, $count_teachs, $input_year)
+    public function randKromosom($kromosom, $count_pembawakapal, $input_year)
     {
         Schedule::truncate();
 
         for ($i = 0; $i < $kromosom; $i++)
         {
             $values = [];
-            for ($j = 0; $j < $count_teachs; $j++)
+            for ($j = 0; $j < $count_pembawakapal; $j++)
             {
-                // $teach = Teach::whereHas('course', function ($query) use ($input_semester)
+                // $pembawakapal = pembawakapal::whereHas('course', function ($query) use ($input_semester)
                 // {
                 //     $query->where('courses.semester', $input_semester);
                 // });
 
                 $day   = Day::inRandomOrder()->first();
-                $teach = Teach::where('year', $input_year)->inRandomOrder()->first();
-                $room  = Room::where('type', $teach->course->type)->inRandomOrder()->first();
+                $pembawakapal = Pembawakapal::where('year', $input_year)->inRandomOrder()->first();
+                $kapal  = Kapal::where('type', $pembawakapal->agen->type)->inRandomOrder()->first();
                 //return dd($room);
                 $time  = Time::inRandomOrder()->first();
 
                 $params = [
-                    'teachs_id' => $teach->id,
+                    'pembawakapal_id' => $pembawakapal->id,
                     'days_id'   => $day->id,
                     'times_id'  => $time->id,
-                    'rooms_id'  => $room->id,
+                    'kapal_id'  => $kapal->id,
                     'type'      => $i + 1,
                 ];
 
@@ -48,8 +48,8 @@ class GenerateAlgoritma
 
     public function checkPinalty()
     {
-        $schedules = Schedule::select(DB::raw('teachs_id, days_id, times_id, type, count(*) as `jumlah`'))
-            ->groupBy('teachs_id')
+        $schedules = Schedule::select(DB::raw('pembawakapal_id, days_id, times_id, type, count(*) as `jumlah`'))
+            ->groupBy('pembawakapal_id')
             ->groupBy('days_id')
             ->groupBy('times_id')
             ->groupBy('type')
@@ -58,30 +58,30 @@ class GenerateAlgoritma
 
         $result_schedules = $this->increaseProccess($schedules);
 
-        $schedules = Schedule::select(DB::raw('teachs_id, days_id, rooms_id, type, count(*) as `jumlah`'))
-            ->groupBy('teachs_id')
+        $schedules = Schedule::select(DB::raw('pembawakapal_id, days_id, kapal_id, type, count(*) as `jumlah`'))
+            ->groupBy('pembawakapal_id')
             ->groupBy('days_id')
-            ->groupBy('rooms_id')
+            ->groupBy('kapal_id')
             ->groupBy('type')
             ->having('jumlah', '>', 1)
             ->get();
 
         $result_schedules = $this->increaseProccess($schedules);
 
-        $schedules = Schedule::select(DB::raw('times_id, days_id, rooms_id, type, count(*) as `jumlah`'))
+        $schedules = Schedule::select(DB::raw('times_id, days_id, kapal_id, type, count(*) as `jumlah`'))
             ->groupBy('times_id')
             ->groupBy('days_id')
-            ->groupBy('rooms_id')
+            ->groupBy('kapal_id')
             ->groupBy('type')
             ->having('jumlah', '>', 1)
             ->get();
 
         $result_schedules = $this->increaseProccess($schedules);
 
-        $schedules = Schedule::join('teachs', 'teachs.id', '=', 'schedules.teachs_id')
-            ->join('lecturers', 'lecturers.id', '=', 'teachs.lecturers_id')
-            ->select(DB::raw('lecturers_id, days_id, times_id, type, count(*) as `jumlah`'))
-            ->groupBy('lecturers_id')
+        $schedules = Schedule::join('pembawakapal', 'pembawakapal.id', '=', 'schedules.pembawakapal_id')
+            ->join('nahkoda', 'nahkoda.id', '=', 'pembawakapal.nahkoda_id')
+            ->select(DB::raw('nahkoda_id, days_id, times_id, type, count(*) as `jumlah`'))
+            ->groupBy('nahkoda_id')
             ->groupBy('days_id')
             ->groupBy('times_id')
             ->groupBy('type')
@@ -108,11 +108,11 @@ class GenerateAlgoritma
         {
             foreach ($time_not_availables as $k => $time_not_available)
             {
-                $schedules = Schedule::whereHas('teach', function ($query) use ($time_not_available)
+                $schedules = Schedule::whereHas('pembawakapal', function ($query) use ($time_not_available)
                 {
-                    $query = $query->whereHas('lecturer', function ($q) use ($time_not_available)
+                    $query = $query->whereHas('nahkoda', function ($q) use ($time_not_available)
                     {
-                        $q->where('lecturers.id', $time_not_available->lecturers_id);
+                        $q->where('nahkoda.id', $time_not_available->nahkoda_id);
                     });
                 });
 
