@@ -37,7 +37,7 @@
                     </div>
                     <div class="box-body">
                         <div class="row">
-                        {!! Form::open(['role' => 'form', 'route' => 'admin.teachs', 'method' =>'get']) !!}
+                        {!! Form::open(['role' => 'form', 'route' => 'admin.pembawakapal', 'method' =>'get']) !!}
                             <div class="col-md-4">
                                 <div class="form-group">
                                     {!! Form::text('searchlecturers', Input::get('searchlecturers')?: null, ['class' => 'form-control', 'placeholder' => 'Mencari Berdasarkan Nama Dosen']) !!}
@@ -67,19 +67,16 @@
                                                 No.
                                             </th>
                                             <th style="text-align:center;">
-                                                Nama Dosen
+                                                Nama
                                             </th>
                                             <th style="text-align:center;">
-                                                Mata Kuliah
+                                                Agen
                                             </th>
                                             <th style="text-align:center;">
-                                                Kelas
-                                            </th>
-                                            <th style="text-align:center;">
-                                                Tahun Kurikulum
+                                                Tahun
                                             </th>
                                            <th colspan="2" style="text-align:center;">
-                                                <a class="btn btn-primary" href="{{ route('admin.teach.create') }}">
+                                                <a class="btn btn-primary" href="{{ route('admin.pembawakapal.create') }}">
                                                     <i class="fa fa-plus">
                                                     </i>
                                                     Tambah Data
@@ -88,26 +85,24 @@
                                         </tr>
                                     </thead>
                                     <tbody>
+                                    {{$teachs = $pembawakapal}}
                                      @foreach($teachs as $key => $teach)
                                         <tr>
                                             <td align="center">
                                                 {{ ($teachs->currentpage()-1) * $teachs->perpage() + $key + 1 }}
                                             </td>
                                             <td>
-                                                {{ isset($teach->lecturer->name) ? $teach->lecturer->name : '' }}
+                                                {{ isset($teach->nahkoda->name) ? $teach->nahkoda->name : '' }}
                                             </td>
                                             <td>
-                                                {{ isset($teach->course->name) ? $teach->course->name : '' }}
-                                            </td>
-                                            <td>
-                                                {{ $teach->class_room }}
+                                                {{ isset($teach->agen->name) ? $teach->agen->name : '' }}
                                             </td>
                                             <td>
                                                 {{ $teach->year }}
                                             </td>
                                             <td class="text-center">
                                                 <div class="btn-group">
-                                                    <a class="btn btn-warning btn-sm" href="{{ route('admin.teach.edit', $teach->id) }}">
+                                                    <a class="btn btn-warning btn-sm" href="{{ route('admin.pembawakapal.edit', $teach->id) }}">
                                                         <span class="glyphicon glyphicon-edit">
                                                         </span>
                                                         Ubah
@@ -116,7 +111,7 @@
                                             </td>
                                             <td class="text-center">
                                                 <div class="btn-group">
-                                                    {!! Form::model($teach, ['route' => ['admin.teach.delete', $teach->id], 'onclick' => 'return confirm("Anda Yakin?");']) !!}
+                                                    {!! Form::model($teach, ['route' => ['admin.pembawakapal.delete', $teach->id], 'onclick' => 'return confirm("Anda Yakin?");']) !!}
                                                     {!! Form::hidden('_method', 'DELETE') !!}
                                                     {!! Form::button('
                                                     <span class="glyphicon glyphicon-trash">

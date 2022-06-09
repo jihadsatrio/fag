@@ -30,6 +30,7 @@ Route::group(['namespace' => 'Admin'], function ()
         Route::get('ajax/kapal/name', ['as' => 'ajax.kapal.name', 'uses' => 'AjaxController@NameKapal']);
         Route::get('ajax/kapal/code', ['as' => 'ajax.kapal.code', 'uses' => 'AjaxController@CodeKapal']);
         Route::get('ajax/pembawakapal/agen', ['as' => 'ajax.pembawakapal.agen', 'uses' => 'AjaxController@PembawakapalKapal']);
+        Route::get('replace', ['as' => 'ajax.kapal.DbReplacer', 'uses' => 'AjaxController@DbReplacer']);
 
         // User
         Route::get('users', ['as' => 'admin.user', 'uses' => 'UserController@index']);
