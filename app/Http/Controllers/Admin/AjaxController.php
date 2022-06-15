@@ -197,24 +197,29 @@ class AjaxController extends Controller
     }
     public function DbReplacer(){
 
-        $replace = DB::table('nahkoda')->where('name','like','%ST%')->get();
+        $replace = DB::table('nahkoda')->where('name','like','%MT%')->get();
+        //return dd($replace);
+        if ($replace->isNotEmpty()) {
+            $count = count($replace);
+            for ($i=0; $i < $count ; $i++) { 
+                //echo $replace[$i]->name.$replace[$i]->id;
+                
+                $x = explode(' ', $replace[$i]->name);
+                if ($x[0] == null) {
+                    echo "pftt".'<br>';
+                }else{
+                    echo $x[0].'<br>'; 
+                }
+                
 
-        $count = count($replace);
-        for ($i=0; $i < $count ; $i++) { 
-            //echo $replace[$i]->name.$replace[$i]->id;
-            
-            $x = explode(' ', $replace[$i]->name);
-            if ($x[0] == null) {
-                echo "pftt".'<br>';
-            }else{
-                echo $x[0].'<br>'; 
+                $sicko = DB::table('nahkoda')->where('id',$replace[$i]->id)->update(['name' => $x[0]]);
+                
+
             }
-            
-
-            $sicko = DB::table('nahkoda')->where('id',$replace[$i]->id)->update(['name' => $x[0]]);
-            
-
+        }else{
+            $sicko = "sudah bosq";
         }
+
         return $sicko;
     }
 

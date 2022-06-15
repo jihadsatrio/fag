@@ -40,7 +40,7 @@
                             {!! Form::open(['role' => 'form', 'route' => 'admin.timenotavailables', 'method' =>'get']) !!}
                             <div class="col-md-6">
                                 <div class="form-group">
-                                    {!! Form::text('searchlecturers', Input::get('searchlecturers')?: null, ['class' => 'form-control', 'placeholder' => 'Mencari Berdasarkan Nama Dosen']) !!}
+                                    {!! Form::text('searchlecturers', Input::get('searchlecturers')?: null, ['class' => 'form-control', 'placeholder' => 'Mencari Berdasarkan Nama nahkoda']) !!}
                                 </div>
                             </div>
                             <div class="col-md-6">
@@ -62,7 +62,7 @@
                                                 No.
                                             </th>
                                             <th style="text-align:center;">
-                                                Dosen
+                                                nahkoda
                                             </th>
                                             <th style="text-align:center;">
                                                 Hari
@@ -86,7 +86,7 @@
                                                 {{ ($timenotavailables->currentpage()-1) * $timenotavailables->perpage() + $key + 1 }}
                                             </td>
                                             <td>
-                                                {{ isset($timenotavailable->lecturer->name) ? $timenotavailable->lecturer->name : '' }}
+                                                {{ isset($timenotavailable->nahkoda->name) ? $timenotavailable->nahkoda->name : '' }}
                                             </td>
                                             <td>
                                                 {{ isset($timenotavailable->day->name_day) ? $timenotavailable->day->name_day : '' }}

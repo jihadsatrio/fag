@@ -1,10 +1,10 @@
 {!! Form::hidden('idtimenotavailables', isset($timenotavailables->id) ? $timenotavailables->id : '', ['class' => 'form-control', 'id' => 'idtimenotavailables']) !!}
 <div class="form-group">
     <label>
-        Dosen
+        Nahkoda
     </label>
-     {!! Form::select('lecturers', $lecturers, isset($timenotavailables->lecturers_id) ? $timenotavailables->lecturers_id : '' ,['class' => 'form-control select2 to-select','id' => 'lecturers', 'required', 'placeholder' => 'Pilih Dosen']) !!}
-    <label id="lecturers-error" class="error" for="lecturers" style="display: none;">This field is required.</label>
+     {!! Form::select('nahkoda', $nahkoda, isset($timenotavailables->nahkoda_id) ? $timenotavailables->nahkoda_id : '' ,['class' => 'form-control select2 to-select','id' => 'nahkoda', 'required', 'placeholder' => 'Pilih Nahkoda']) !!}
+    <label id="nahkoda-error" class="error" for="nahkoda" style="display: none;">This field is required.</label>
 </div>
 <div class="form-group">
     <label>
