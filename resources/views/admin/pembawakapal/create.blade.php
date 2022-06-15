@@ -32,7 +32,7 @@
                                 <div class="panel-body no-padding" style="display: block;">
                                     @include('admin._partials.notifications')
                                     {!! Form::open(['role' => 'form', 'files' => true, 'id' => 'form-register']) !!}
-                                        @include('admin.teach.form')
+                                        @include('admin.pembawakapal.form')
                                     {!! Form::close() !!}
                                 </div>
                             </div>
